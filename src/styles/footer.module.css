@@ -1,31 +1,32 @@
 .footer {
-    margin-top: auto;
-    padding: 1em 0;
-    background-color: steelblue;
+  margin-top: auto;
+  padding: 1em 0;
+  border-top: 2px solid rgb(0, 110, 255);
+}
+
+.links_container {
+  display: flex;
+  gap: 20px;
 }
 
 .section {
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-weight: bold;
-    height: 7em;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .il {
-    color: #fff;
-    position: relative;
+  color: #fff;
+  position: relative;
+  padding: 5px;
 }
 
-
 .il:hover {
-    background: #707070;
-    transition: 0.5;
-    border-radius: 10px;
-    padding: 2px;
+  background: #707070;
+  border-radius: 10px;
 }
 
 .il:active {
-    top: 1.5px;
+  top: 1.5px;
 }
