@@ -5,6 +5,7 @@
 }
 
 .links_container {
+  margin-top: 5px;
   display: flex;
   gap: 20px;
 }
@@ -29,4 +30,12 @@
 
 .il:active {
   top: 1.5px;
+}
+
+
+.icon {
+  height: 20px;
+  width: 30px;
+  float: right;
+  margin-left: 10px;
 }
