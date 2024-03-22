@@ -1,0 +1,31 @@
+.footer {
+    margin-top: auto;
+    padding: 1em 0;
+    background-color: steelblue;
+}
+
+.section {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    height: 7em;
+}
+
+.il {
+    color: #fff;
+    position: relative;
+}
+
+
+.il:hover {
+    background: #707070;
+    transition: 0.5;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.il:active {
+    top: 1.5px;
+}
