@@ -1,7 +1,12 @@
 .container {
+  background-image: url("/images/banner.jpg");
+  background-size: cover;
+  background-position: center;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 20px 10px 20px;
+  border-bottom: 2px solid white;
 }
 
 .title {
@@ -10,6 +15,7 @@
 
 .nav_container {
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 20px;
 }
