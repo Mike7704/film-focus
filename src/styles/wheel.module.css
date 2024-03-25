@@ -1,0 +1,11 @@
+.container {
+  background-image: url("/images/cinema.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+}
