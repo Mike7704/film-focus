@@ -1,0 +1,20 @@
+.movie_container {
+  display: flex;
+  flex-direction: column;
+  width: 185px;
+  border: 2px solid white;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.text_container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+}
