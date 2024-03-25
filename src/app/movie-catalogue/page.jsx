@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import catalogueStyle from "@/styles/catalogue.module.css";
 import MovieCard from "@/components/MovieCard";
+import Link from "next/link";
 
 export default function Catalogue() {
   const [movies, setMovies] = useState([]);
@@ -20,7 +21,9 @@ export default function Catalogue() {
     <div className={catalogueStyle.container}>
       <h2>Movies:</h2>
       {movies.map((movie) => (
-        <MovieCard movie={movie} />
+        <Link href={`/movie/${movie.id}`}>
+          <MovieCard movie={movie} />
+        </Link>
       ))}
     </div>
   );
