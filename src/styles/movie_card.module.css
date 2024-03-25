@@ -6,15 +6,29 @@
   border-radius: 5px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .text_container {
   position: absolute;
-  bottom: 0;
+  bottom: -150px;
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.5);
   color: white;
-  padding: 10px;
+  font-size: 14px;
+  padding: 5px 8px 5px 8px;
+  transition: bottom 0.3s ease;
+}
+
+.movie_container:hover {
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+}
+
+.movie_container:hover .text_container {
+  bottom: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  font-size: 23px;
 }
