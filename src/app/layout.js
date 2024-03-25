@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className} suppressHydrationWarning={true}>
+          <div className="background-overlay" />
           <Header />
 
           {children}
