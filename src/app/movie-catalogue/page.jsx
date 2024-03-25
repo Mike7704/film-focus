@@ -29,8 +29,8 @@ export default function Catalogue() {
   );
 }
 
-{
-  /* // {movies.map((movie) => (
+// {
+/* // {movies.map((movie) => (
 //   <div key={movie.id} className={catalogueStyles.movie_card}>
 //     <h2 className={catalogueStyles.movie_titile}>Title: {movie.title}</h2>
 //     <p className={catalogueStyles.movie_overview}>
@@ -48,4 +48,4 @@ export default function Catalogue() {
 //     />
 //   </div>
 // ))} */
-}
+//  }

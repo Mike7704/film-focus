@@ -1,4 +1,8 @@
+import NewPostPage from "@/components/NewPostPage";
 import Image from "next/image";
+import Rating from "@/components/Rating.jsx"
+// import { useState } from "react";
+// import { FaStart } from "react-icons/fa";
 
 export default async function VideoPlayer({ params }) {
     const movieID = params.id;
@@ -25,7 +29,12 @@ export default async function VideoPlayer({ params }) {
                 height={250}
                 alt="Movie Poster"
             />
+            <NewPostPage />
+            <p>delete btn</p>
+            <p>Modify btn</p>
+            <Rating />
         </div>
+
     );
 
 };
