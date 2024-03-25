@@ -25,7 +25,7 @@ export default async function VideoPlayer({ params }) {
   } catch (error) {
     throw new Error("Could not load reviews");
   }
-  
+
   return (
     <div>
       <h3>{movie.title}</h3>
@@ -52,20 +52,21 @@ export default async function VideoPlayer({ params }) {
 
 
       <div>
-            <h1>{movie.title}</h1>
-            <p>{movie.overview}</p>
-            <p>{movie.release_date}</p>
-            <Image
-                src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
-                width={185}
-                height={250}
-                alt="Movie Poster"
-            />
-            <NewPostPage />
-            <p>delete btn</p>
-            <p>Modify btn</p>
-            <Rating />
-        </div>
+        <h1>{movie.title}</h1>
+        <p>{movie.overview}</p>
+        <p>{movie.release_date}</p>
+        <Image
+          src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+          width={185}
+          height={250}
+          alt="Movie Poster"
+        />
+        <NewPostPage
+          movie_id={movie.id} />
+        <p>delete btn</p>
+        <p>Modify btn</p>
+        <Rating />
+      </div>
 
     </div>
   );
