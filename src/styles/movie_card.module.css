@@ -28,4 +28,7 @@
 
 .movie_container:hover .text_container {
   bottom: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  font-size: 23px;
 }
