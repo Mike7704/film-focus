@@ -4,8 +4,9 @@ import Image from "next/image";
 import Rating from "@/components/Rating.jsx";
 import { notFound } from "next/navigation";
 import movieStyle from "@/styles/movie.module.css";
-// import { useState } from "react";
-// import { FaStart } from "react-icons/fa";
+import Deletebtn from "@/components/Deletebtn";
+import Update from "@/components/Update";
+
 
 export default async function VideoPlayer({ params }) {
   const movieID = params.id;
@@ -57,8 +58,8 @@ export default async function VideoPlayer({ params }) {
                 <li>Review: {review.review_text}</li>
                 <li>Posted By: {review.username}</li>
                 <li>Posted: {review.review_date.toLocaleString("en-GB")}</li>
-                <button>Delete</button>
-                <button>Edit</button>
+                <Deletebtn review_id={review.review_id} movie_id={movieID} />
+                <Update review_id={review.review_id} />
               </div>
             ))
           )}
