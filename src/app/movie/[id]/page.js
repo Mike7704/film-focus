@@ -1,14 +1,15 @@
-import NewPostPage from "@/components/NewPostPage";
 import { sql } from "@vercel/postgres";
+import { currentUser } from "@clerk/nextjs";
 import Image from "next/image";
-import Rating from "@/components/Rating.jsx";
 import { notFound } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import movieStyle from "@/styles/movie.module.css";
 import Deletebtn from "@/components/Deletebtn";
 import Update from "@/components/Update";
+import StarRating from "@/components/StarRating.jsx";
+import SubmitReviewButton from "@/components/SubmitReviewButton";
 
-
-export default async function VideoPlayer({ params }) {
+export default async function Movie({ params }) {
   const movieID = params.id;
   const apiKey = process.env.TMDB_API_KEY;
   let movie;
@@ -35,6 +36,27 @@ export default async function VideoPlayer({ params }) {
     throw new Error("Could not load reviews");
   }
 
+  async function handleSaveReview(formData) {
+    "use server";
+
+    const user = await currentUser();
+    if (!user) {
+      throw new Error("You need to be logged in to add a review.");
+    }
+    const reviewText = formData.get("reviewText");
+    const rating = formData.get("rating");
+
+    await sql`INSERT INTO MovieReviews (user_id, username, movie_id, rating, review_text) VALUES (
+      ${user.id}, 
+      ${user.username}, 
+      ${movieID}, 
+      ${rating}, 
+      ${reviewText}
+      );`;
+
+    revalidatePath(`/movie/${movieID}`);
+  }
+
   return (
     <main className={movieStyle.container}>
       <div className={movieStyle.info_container}>
@@ -46,30 +68,32 @@ export default async function VideoPlayer({ params }) {
 
       <h3>Reviews:</h3>
       <div className={movieStyle.reviews_container}>
-        <ul>
-          {reviews.rows.length === 0 ? (
-            <div>
-              <li>No reviews available</li>
-            </div>
-          ) : (
-            reviews.rows.map((review) => (
-              <div key={review.id}>
+        {reviews.rows.length === 0 ? (
+          <p>No reviews available</p>
+        ) : (
+          reviews.rows.map((review) => (
+            <div key={review.review_id}>
+              <ul>
                 <li>Rating: {review.rating} / 5</li>
                 <li>Review: {review.review_text}</li>
                 <li>Posted By: {review.username}</li>
                 <li>Posted: {review.review_date.toLocaleString("en-GB")}</li>
-                <Deletebtn review_id={review.review_id} movie_id={movieID} />
-                <Update review_id={review.review_id} />
-              </div>
-            ))
-          )}
-        </ul>
+              </ul>
+              <Deletebtn review_id={review.review_id} movie_id={movieID} />
+              <Update review_id={review.review_id} />
+            </div>
+          ))
+        )}
       </div>
 
       <h3>Add Review:</h3>
       <div className={movieStyle.add_review_container}>
-        <Rating />
-        <NewPostPage movie_id={movie.id} />
+        <form action={handleSaveReview}>
+          <StarRating />
+          <label htmlFor="review">review</label>
+          <textarea id="reviewText" name="reviewText" />
+          <SubmitReviewButton />
+        </form>
       </div>
     </main>
   );
