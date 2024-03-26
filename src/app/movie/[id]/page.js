@@ -4,8 +4,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import movieStyle from "@/styles/movie.module.css";
-import Deletebtn from "@/components/Deletebtn";
-import Update from "@/components/Update";
+import DeleteButton from "@/components/DeleteReviewButton";
+import UpdateButton from "@/components/UpdateReviewButton";
 import StarRating from "@/components/StarRating.jsx";
 import SubmitReviewButton from "@/components/SubmitReviewButton";
 
@@ -72,15 +72,15 @@ export default async function Movie({ params }) {
           <p>No reviews available</p>
         ) : (
           reviews.rows.map((review) => (
-            <div key={review.review_id}>
+            <div className={movieStyle.review} key={review.review_id}>
               <ul>
                 <li>Rating: {review.rating} / 5</li>
                 <li>Review: {review.review_text}</li>
                 <li>Posted By: {review.username}</li>
                 <li>Posted: {review.review_date.toLocaleString("en-GB")}</li>
               </ul>
-              <Deletebtn review_id={review.review_id} movie_id={movieID} />
-              <Update review_id={review.review_id} />
+              <DeleteButton review_id={review.review_id} movie_id={movieID} />
+              <UpdateButton review_id={review.review_id} movie_id={movieID} newReviewText="I updated this review" newRating="5" />
             </div>
           ))
         )}
@@ -90,7 +90,7 @@ export default async function Movie({ params }) {
       <div className={movieStyle.add_review_container}>
         <form action={handleSaveReview}>
           <StarRating />
-          <label htmlFor="review">review</label>
+          <label htmlFor="reviewText">review</label>
           <textarea id="reviewText" name="reviewText" />
           <SubmitReviewButton />
         </form>

@@ -8,15 +8,15 @@ export default function StarRating() {
   const [hover, setHover] = useState(null);
 
   return (
-    <div className={ratingStyle.example}>
+    <div className={ratingStyle.container}>
       {[...Array(5)].map((_, index) => {
         const currentRating = index + 1;
         return (
           <label key={currentRating}>
-            <input type="radio" id="rating" name="rating" value={currentRating} onClick={() => setRating(currentRating)} />
+            <input className="hidden" type="radio" id="rating" name="rating" value={currentRating} onClick={() => setRating(currentRating)} />
             <FaStar
               className={ratingStyle.example}
-              size={50}
+              size={30}
               color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
               onMouseEnter={() => setHover(currentRating)}
               onMouseLeave={() => setHover(null)}
