@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { ImSearch } from "react-icons/im";
-import style from "@/styles/SearchBar.module.css";
+import style from "@/styles/search_bar.module.css";
 
 export default function SearchBar() {
   const [value, setValue] = useState("");
@@ -9,9 +9,7 @@ export default function SearchBar() {
   const apiKey = process.env.TMDB_API_KEY;
   const handleSearch = async () => {
     try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${value}&api_key=5ce82a49ce51b8b8835fd081ca4e815a`
-      );
+      const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${value}&api_key=5ce82a49ce51b8b8835fd081ca4e815a`);
       const data = await response.json();
       console.log(apiKey);
       console.log(data);

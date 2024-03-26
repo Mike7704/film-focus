@@ -1,6 +1,7 @@
 export default function Movie() {
-    return (
-        <div>
-            <h1>Movie</h1>
-        </div>)
+  return (
+    <main>
+      <h1>Movie</h1>
+    </main>
+  );
 }
