@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import Style from "@/styles/rating.module.css";
+import { fromJSON } from "postcss";
 
 export default function rating() {
   const [rating, setRating] = useState(null);

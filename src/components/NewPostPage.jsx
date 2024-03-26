@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { currentUser } from "@clerk/nextjs";
 import SavePostButton from "@/components/SavePostButton";
+import Delete from "./Deletebtn";
 
 export default function NewPostPage({ movie_id }) {
   async function handleSavePost(formData) {
@@ -20,8 +21,8 @@ export default function NewPostPage({ movie_id }) {
       ${reviewText}
       );`;
     console.log("Post saved!");
-    revalidatePath("/");
-    redirect("/");
+    revalidatePath(`/movie/${movie_id}`);
+    redirect(`/movie/${movie_id}`);
   }
 
   return (
