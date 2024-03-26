@@ -1,7 +1,9 @@
 import NewPostPage from "@/components/NewPostPage";
 import { sql } from "@vercel/postgres";
 import Image from "next/image";
-import Rating from "@/components/Rating.jsx"
+import Rating from "@/components/Rating.jsx";
+import { notFound } from "next/navigation";
+import movieStyle from "@/styles/movie.module.css";
 // import { useState } from "react";
 // import { FaStart } from "react-icons/fa";
 
@@ -12,13 +14,19 @@ export default async function VideoPlayer({ params }) {
   let reviews;
 
   try {
+    // Fetch movie by id from API
     const response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}`);
-    movie = await response.json();
+    if (response.ok) {
+      movie = await response.json();
+    } else {
+      throw new Error("Movie not found");
+    }
   } catch (error) {
-    console.error("Error getting search results:", error);
+    notFound();
   }
 
   try {
+    // Fetch all reviews for the movie
     reviews = await sql`
       SELECT * FROM moviereviews WHERE movie_id = ${movieID}
     ;`;
@@ -27,47 +35,41 @@ export default async function VideoPlayer({ params }) {
   }
 
   return (
-    <div>
-      <h3>{movie.title}</h3>
-      <p>{movie.overview}</p>
-      <p>{movie.release_date}</p>
-      <Image src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} width={185} height={250} alt="Movie Poster" />
-
-      <ul>
-        {reviews.rows.length === 0 ? (
-          <div>
-            <li>No reviews available</li>
-          </div>
-        ) : (
-          reviews.rows.map((review) => (
-            <div key={review.id}>
-              <li>Rating: {review.rating} / 5</li>
-              <li>Review: {review.review_text}</li>
-              <li>Posted By: {review.username}</li>
-              <li>Posted: {review.review_date.toLocaleString("en-GB")}</li>
-            </div>
-          ))
-        )}
-      </ul>
-
-
-      <div>
-        <h1>{movie.title}</h1>
+    <main className={movieStyle.container}>
+      <div className={movieStyle.info_container}>
+        <h3>{movie.title}</h3>
         <p>{movie.overview}</p>
-        <p>{movie.release_date}</p>
-        <Image
-          src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
-          width={185}
-          height={250}
-          alt="Movie Poster"
-        />
-        <NewPostPage
-          movie_id={movie.id} />
-        <p>delete btn</p>
-        <p>Modify btn</p>
-        <Rating />
+        <p>{movie.release_date.replace(/(\d{4})-(\d{2})-(\d{2})/, "$3/$2/$1")}</p>
+        <Image src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} width={185} height={250} alt="Movie Poster" />
       </div>
 
-    </div>
+      <h3>Reviews:</h3>
+      <div className={movieStyle.reviews_container}>
+        <ul>
+          {reviews.rows.length === 0 ? (
+            <div>
+              <li>No reviews available</li>
+            </div>
+          ) : (
+            reviews.rows.map((review) => (
+              <div key={review.id}>
+                <li>Rating: {review.rating} / 5</li>
+                <li>Review: {review.review_text}</li>
+                <li>Posted By: {review.username}</li>
+                <li>Posted: {review.review_date.toLocaleString("en-GB")}</li>
+                <button>Delete</button>
+                <button>Edit</button>
+              </div>
+            ))
+          )}
+        </ul>
+      </div>
+
+      <h3>Add Review:</h3>
+      <div className={movieStyle.add_review_container}>
+        <Rating />
+        <NewPostPage movie_id={movie.id} />
+      </div>
+    </main>
   );
 }
