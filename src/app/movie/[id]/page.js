@@ -59,7 +59,7 @@ export default async function VideoPlayer({ params }) {
                 <li>Posted By: {review.username}</li>
                 <li>Posted: {review.review_date.toLocaleString("en-GB")}</li>
                 <Deletebtn review_id={review.review_id} movie_id={movieID} />
-                <Update review_id={review.review_id} />
+                <Update review_id={review.review_id} movie_id={movieID} newReviewText={review.newReviewText} newRating={review.newRating} />
               </div>
             ))
           )}
