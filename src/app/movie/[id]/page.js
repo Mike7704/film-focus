@@ -78,12 +78,12 @@ export default async function Movie({ params }) {
                 <li>Review: {review.review_text}</li>
                 <li>Posted By: {review.username}</li>
                 <li>Posted: {review.review_date.toLocaleString("en-GB")}</li>
-              </ul>
-              <Deletebtn review_id={review.review_id} movie_id={movieID} />
-              <Update review_id={review.review_id} />
-            </div>
-          ))
-        )}
+                <Deletebtn review_id={review.review_id} movie_id={movieID} />
+                <Update review_id={review.review_id} movie_id={movieID} newReviewText={review.newReviewText} newRating={review.newRating} />
+              </div>
+            ))
+          )}
+        </ul>
       </div>
 
       <h3>Add Review:</h3>
