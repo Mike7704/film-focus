@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "@/styles/globals.css";
+import "@/styles/normalize.css"
 
 const font = Raleway({ subsets: ["latin"], weight: "400" });
 

@@ -14,8 +14,16 @@ export default function SearchBar() {
       <div className={style.div2}>
         <ImSearch />
       </div>
-      <input type="text" id="searchQuery" name="searchQuery" placeholder="Search..." required />
-      <button type="submit">Search</button>
+      <input
+        type="text"
+        id="searchQuery"
+        name="searchQuery"
+        placeholder="Search..."
+        required
+      />
+      <button className="button" type="submit">
+        Search
+      </button>
     </form>
   );
 }
