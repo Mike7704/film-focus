@@ -1,6 +1,6 @@
 import Link from "next/link";
-import footerStyle from "@/styles/footer.module.css";
 import { FaGithub } from "react-icons/fa";
+import footerStyle from "@/styles/footer.module.css";
 
 export default function Footer() {
   return (

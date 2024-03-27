@@ -1,13 +1,13 @@
 import { sql } from "@vercel/postgres";
 import { currentUser } from "@clerk/nextjs";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import movieStyle from "@/styles/movie.module.css";
-import DeleteButton from "@/components/DeleteReviewButton";
-import UpdateButton from "@/components/UpdateReviewButton";
+import Image from "next/image";
 import StarRating from "@/components/StarRating.jsx";
 import SubmitReviewButton from "@/components/SubmitReviewButton";
+import DeleteButton from "@/components/DeleteReviewButton";
+import UpdateButton from "@/components/UpdateReviewButton";
+import movieStyle from "@/styles/movie.module.css";
 
 export default async function Movie({ params }) {
   const movieID = params.id;
@@ -80,7 +80,7 @@ export default async function Movie({ params }) {
                 <li>Posted: {review.review_date.toLocaleString("en-GB")}</li>
               </ul>
               <DeleteButton review_id={review.review_id} movie_id={movieID} />
-              <UpdateButton review_id={review.review_id} movie_id={movieID} newReviewText="I updated this review" newRating="5" />
+              <UpdateButton review_id={review.review_id} movie_id={movieID} currentRating={review.rating} currentReview={review.review_text} />
             </div>
           ))
         )}
@@ -89,9 +89,9 @@ export default async function Movie({ params }) {
       <h3>Add Review:</h3>
       <div className={movieStyle.add_review_container}>
         <form action={handleSaveReview}>
-          <StarRating />
+          <StarRating required />
           <label htmlFor="reviewText">review</label>
-          <textarea id="reviewText" name="reviewText" />
+          <textarea id="reviewText" name="reviewText" required />
           <SubmitReviewButton />
         </form>
       </div>

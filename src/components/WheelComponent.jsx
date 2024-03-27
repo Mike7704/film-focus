@@ -19,10 +19,6 @@ export default function WheelComponent() {
     }
   };
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
   const handleAddMovieOption = () => {
     // Limit to 10 options
     if (wheelData.length < 10) {
@@ -61,7 +57,7 @@ export default function WheelComponent() {
       </div>
       <div className={wheelStyle.input_container}>
         <form action={handleAddMovieOption}>
-          <input type="text" value={inputValue} onChange={handleInputChange} placeholder="Enter movie name" required />
+          <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder="Enter movie name" required />
           <button type="submit">Add Movie</button>
         </form>
         {wheelData.map((movieOption, index) => (

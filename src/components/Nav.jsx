@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import { SignInButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs";
+import Link from "next/link";
 import headerStyle from "@/styles/header.module.css";
 
 export default function Nav() {

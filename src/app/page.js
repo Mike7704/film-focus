@@ -9,9 +9,6 @@ export default function Home() {
         <p>Browse our large collection of films to find what to watch next.</p>
       </div>
       <SearchBar />
-      <div>
-        <h3>Latest Movies</h3>
-      </div>
     </main>
   );
 }
