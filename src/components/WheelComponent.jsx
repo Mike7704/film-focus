@@ -6,9 +6,15 @@ import wheelStyle from "@/styles/wheel.module.css";
 export default function WheelComponent() {
   const [mustSpin, setMustSpin] = useState(false);
   const [optionNumber, setOptionNumber] = useState(0);
-  const [wheelData, setWheelData] = useState([{ option: "Movie #1" }, { option: "Movie #2" }, { option: "Movie #3" }]);
+  const [wheelData, setWheelData] = useState([
+    { option: "Movie #1" },
+    { option: "Movie #2" },
+    { option: "Movie #3" },
+  ]);
   const [inputValue, setInputValue] = useState("");
-  const [result, setResult] = useState("Spin the wheel using the button below.");
+  const [result, setResult] = useState(
+    "Spin the wheel using the button below."
+  );
 
   const handleSpinClick = () => {
     if (!mustSpin) {
@@ -44,26 +50,50 @@ export default function WheelComponent() {
           mustStartSpinning={mustSpin}
           prizeNumber={optionNumber}
           data={wheelData}
-          backgroundColors={["red", "green", "blue", "orange", "purple", "pink"]}
+          backgroundColors={[
+            "#FFBE0B",
+            "#fb5607",
+            "#3A86FF",
+            "#FD2B3B",
+            "#8338EC",
+            "#FF006E",
+          ]}
           textColors={["#ffffff"]}
           spinDuration={0.2}
           onStopSpinning={() => {
             setMustSpin(false);
-            setResult(`The wheel has chosen: ${wheelData[optionNumber].option}`);
+            setResult(
+              `The wheel has chosen: ${wheelData[optionNumber].option}`
+            );
           }}
         />
-        <p>{result}</p>
-        <button onClick={handleSpinClick}>SPIN</button>
+        <p className={wheelStyle.result}>{result}</p>
+        <button className={wheelStyle.buttonSpin} onClick={handleSpinClick}>
+          SPIN
+        </button>
       </div>
       <div className={wheelStyle.input_container}>
         <form action={handleAddMovieOption}>
-          <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder="Enter movie name" required />
-          <button type="submit">Add Movie</button>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Enter movie name"
+            required
+          />
+          <button className={wheelStyle.buttonAdd} type="submit">
+            Add Movie
+          </button>
         </form>
         {wheelData.map((movieOption, index) => (
           <div key={index}>
             <span>{movieOption.option}</span>
-            <button onClick={() => handleRemoveMovieOption(index)}>Remove</button>
+            <button
+              className={wheelStyle.buttonRemove}
+              onClick={() => handleRemoveMovieOption(index)}
+            >
+              X
+            </button>
           </div>
         ))}
       </div>

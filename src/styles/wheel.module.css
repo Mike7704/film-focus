@@ -11,6 +11,12 @@
   border-bottom: 2px solid white;
 }
 
+.heading {
+  color: #00000092;
+  padding-top: 4rem;
+  font-weight: bold;
+  font-size: 25px;
+}
 .container {
   display: flex;
   align-items: center;
@@ -29,5 +35,49 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+}
+
+.result {
+  padding: 1rem;
+  font-size: 20px;
+  background-color: #3a86ff;
+  border: 2px solid #0241a79c;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  color: #ffffff;
+}
+.buttonSpin {
+  background-color: #ffbe0b;
+  border: 2px solid #ffa601;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  min-width: 140px;
+  padding: 5px 20px 5px 20px;
+  margin-top: 2rem;
+}
+
+.buttonAdd {
+  background-color: #3a86ff;
+  border: 2px solid #0241a79c;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  min-width: 140px;
+  padding: 5px 20px 5px 20px;
+  margin-bottom: 2rem;
+}
+
+.buttonRemove {
+  background-color: #3a86ff;
+  border: 2px solid #03388b;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 13px;
+  min-width: 40px;
+  padding: 0.5px 1px 0.5px 1px;
+  margin-left: 0.5rem;
+  margin-bottom: 0.25rem;
 }
