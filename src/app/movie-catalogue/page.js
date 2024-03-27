@@ -2,6 +2,7 @@ import Link from "next/link";
 import SearchBar from "@/components/SearchBar";
 import MovieCard from "@/components/MovieCard";
 import catalogueStyle from "@/styles/catalogue.module.css";
+import ChangePage from "@/components/ChangePage";
 
 export default async function Catalogue({ searchParams }) {
   //const [movies, setMovies] = useState([]);
@@ -9,12 +10,19 @@ export default async function Catalogue({ searchParams }) {
   const apiKey = process.env.TMDB_API_KEY;
   let response;
   let moviesData;
+  let pageNum = 1;
+
+  if (searchParams.page) {
+    pageNum = searchParams.page;
+  }
+
   if (searchParams.query) {
-    response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchParams.query}&api_key=${apiKey}`);
+    response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchParams.query}&page=${pageNum}&api_key=${apiKey}`);
   } else {
-    response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=${apiKey}`);
+    response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=${pageNum}&api_key=${apiKey}`);
   }
   moviesData = await response.json();
+  const totalPages = moviesData.total_pages;
   const movies = moviesData.results;
 
   return (
@@ -30,6 +38,7 @@ export default async function Catalogue({ searchParams }) {
           </div>
         ))}
       </div>
+      <ChangePage currentPage={pageNum} totalPages={totalPages} />
     </main>
   );
 }
