@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "@/styles/globals.css";
 
-const font = Raleway({ subsets: ["latin"], weight: "400" });
+const font = Raleway({ subsets: ["latin"], weight: "500" });
 
 export const metadata = {
   title: "Film Focus",

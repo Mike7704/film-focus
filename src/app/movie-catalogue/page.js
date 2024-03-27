@@ -16,6 +16,8 @@ export default async function Catalogue({ searchParams }) {
   }
   moviesData = await response.json();
   const movies = moviesData.results;
+  const totalPages = moviesData.total_pages;
+  console.log(searchParams);
 
   return (
     <main className={catalogueStyle.container}>
