@@ -1,14 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
-import ratingStyle from "@/styles/rating.module.css";
+import ratingStyle from "@/styles/star_rating.module.css";
 
-export default function StarRating({ initialRating }) {
+export default function StarRating({ initialRating, justDisplayStars }) {
   const [rating, setRating] = useState(initialRating);
   const [hover, setHover] = useState(null);
 
   return (
     <div className={ratingStyle.container}>
+      {!justDisplayStars && <p>Rating:</p>}
       {[...Array(5)].map((_, index) => {
         const currentRating = index + 1;
         return (
@@ -19,14 +20,18 @@ export default function StarRating({ initialRating }) {
               id="rating"
               name="rating"
               value={currentRating}
-              onClick={() => setRating(currentRating)}
+              onClick={() => {
+                !justDisplayStars && setRating(currentRating);
+              }}
               required
             />
             <FaStar
-              className={ratingStyle.star}
+              className={!justDisplayStars && ratingStyle.star}
               size={30}
               color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-              onMouseEnter={() => setHover(currentRating)}
+              onMouseEnter={() => {
+                !justDisplayStars && setHover(currentRating);
+              }}
               onMouseLeave={() => setHover(null)}
             />
           </label>

@@ -3,8 +3,10 @@ import { handleReviewUpdate } from "@/utils/utils";
 import { useState } from "react";
 import StarRating from "@/components/StarRating.jsx";
 import SubmitReviewButton from "@/components/SubmitReviewButton";
+import DeleteButton from "@/components/DeleteReviewButton";
+import movieStyle from "@/styles/movie.module.css";
 
-export default function UpdateReviewButton({ review_id, movie_id, currentRating, currentReview }) {
+export default function EditReview({ review_id, movie_id, currentRating, currentReview }) {
   const [inputText, setInputText] = useState(currentReview);
   const [showForm, setShowForm] = useState(false);
 
@@ -19,16 +21,23 @@ export default function UpdateReviewButton({ review_id, movie_id, currentRating,
     <>
       {showForm ? (
         <>
-          <form action={handleEditReview}>
+          <form className={movieStyle.add_review_form} action={handleEditReview}>
             <StarRating initialRating={currentRating} />
-            <label htmlFor="reviewText">review</label>
+            <label htmlFor="reviewText">Review:</label>
             <textarea id="reviewText" name="reviewText" value={inputText} onChange={(e) => setInputText(e.target.value)} />
             <SubmitReviewButton />
           </form>
-          <button onClick={() => setShowForm(false)}>Close</button>
+          <div className={movieStyle.edit_review_buttons}>
+            <button className="button" onClick={() => setShowForm(false)}>
+              Close
+            </button>
+            <DeleteButton review_id={review_id} movie_id={movie_id} />
+          </div>
         </>
       ) : (
-        <button onClick={() => setShowForm(true)}>Edit</button>
+        <button className="button" onClick={() => setShowForm(true)}>
+          Edit
+        </button>
       )}
     </>
   );

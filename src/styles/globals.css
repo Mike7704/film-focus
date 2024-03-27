@@ -12,6 +12,7 @@ body {
 
 .background-overlay {
   background-image: url("/images/background.jpg");
+  background-size: cover;
   position: fixed;
   opacity: 0.12;
   top: 0;
