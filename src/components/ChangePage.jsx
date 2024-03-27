@@ -26,10 +26,10 @@ export default function ChangePage({ currentPage, totalPages, url }) {
   }, [currentPageNum]);
 
   return (
-    <div>
+    <div className="flex gap-5">
       {showPreviousButton && (
         <Link
-          className="button"
+          className="button "
           href={`/movie-catalogue?page=${previoustPageNumber}`}
         >
           Before
@@ -37,7 +37,7 @@ export default function ChangePage({ currentPage, totalPages, url }) {
       )}
       {showNextButton && (
         <Link
-          className="button"
+          className="button "
           href={`/movie-catalogue?page=${nextPageNumber}`}
         >
           Next

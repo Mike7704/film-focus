@@ -27,7 +27,6 @@ export default async function Catalogue({ searchParams }) {
 
   return (
     <main className={catalogueStyle.container}>
-      <h2>Movies:</h2>
       <SearchBar />
       <div className={catalogueStyle.movies_container}>
         {movies.map((movie) => (
