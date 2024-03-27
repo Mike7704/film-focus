@@ -1,7 +1,7 @@
 "use client";
+import { redirect } from "next/navigation";
 import { ImSearch } from "react-icons/im";
 import style from "@/styles/search_bar.module.css";
-import { redirect } from "next/navigation";
 
 export default function SearchBar() {
   function handleSearch(formData) {
@@ -14,7 +14,8 @@ export default function SearchBar() {
       <div className={style.div2}>
         <ImSearch />
       </div>
-      <input type="text" id="searchQuery" name="searchQuery" placeholder="Search..." />
+      <input type="text" id="searchQuery" name="searchQuery" placeholder="Search..." required />
+      <button type="submit">Search</button>
     </form>
   );
 }

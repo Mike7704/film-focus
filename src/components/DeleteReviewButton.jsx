@@ -7,7 +7,7 @@ export default function DeleteReviewButton({ movie_id, review_id }) {
 
   return (
     <button onClick={() => handleReviewDelete(review_id, movie_id)} type="submit" disabled={formStatus.pending}>
-      {formStatus.pending ? "deleting post..." : "Delete post"}
+      {formStatus.pending ? "Deleting..." : "Delete"}
     </button>
   );
 }
