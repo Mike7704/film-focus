@@ -137,3 +137,28 @@
   padding: 20px;
   gap: 12px;
 }
+
+@media (max-width: 750px) {
+  .title {
+    font-size: 45px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .subheading {
+    font-size: 23px;
+  }
+
+  .info_container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info_text_container {
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+  }
+}

@@ -30,7 +30,7 @@ export default function EditReview({
             className={movieStyle.add_review_form}
             action={handleEditReview}
           >
-            <StarRating initialRating={currentRating} aria-label="Rating" />
+            <StarRating aria-label="Rating" />
             <label aria-label="Review" htmlFor="reviewText">
               Review:
             </label>

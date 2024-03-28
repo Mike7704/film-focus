@@ -62,6 +62,9 @@ export default async function Movie({ params }) {
     revalidatePath(`/movie/${movieID}`);
   }
 
+  // Validate reviews on refresh
+  revalidatePath(`/movie/${movieID}`);
+
   return (
     <main className={movieStyle.page}>
       {isMovieBackground && (
