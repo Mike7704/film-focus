@@ -26,12 +26,28 @@ export default function ChangePage({ currentPage, totalPages, query }) {
   return (
     <div className="flex gap-5">
       {showPreviousButton && (
-        <Link className="button " href={`/movie-catalogue${query ? `?query=${query}&` : "?"}page=${previousPageNumber}`}>
+        <Link
+          role="button"
+          aria-describedby="Previous"
+          aria-pressed="false"
+          className="button "
+          href={`/movie-catalogue${
+            query ? `?query=${query}&` : "?"
+          }page=${previousPageNumber}`}
+        >
           Previous
         </Link>
       )}
       {showNextButton && (
-        <Link className="button " href={`/movie-catalogue${query ? `?query=${query}&` : "?"}page=${nextPageNumber}`}>
+        <Link
+          role="button"
+          aria-describedby="Next"
+          aria-pressed="false"
+          className="button "
+          href={`/movie-catalogue${
+            query ? `?query=${query}&` : "?"
+          }page=${nextPageNumber}`}
+        >
           Next
         </Link>
       )}

@@ -67,7 +67,7 @@ export default async function Movie({ params }) {
       {isMovieBackground && (
         <>
           <div className={movieStyle.background_black}></div>
-          <Image
+          <Image aria-label="movie image"
             className={movieStyle.background_image}
             src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
             width={1280}
@@ -77,45 +77,45 @@ export default async function Movie({ params }) {
         </>
       )}
       <div className={movieStyle.header_container}>
-        <h2 className={movieStyle.title}>{movie.title}</h2>
-        <p className={movieStyle.description}>{movie.tagline}</p>
-        <p className={movieStyle.description}>{movie.overview}</p>
+        <h2 aria-label="movie title" className={movieStyle.title}>{movie.title}</h2>
+        <p aria-label="movie description" className={movieStyle.description}>{movie.tagline}</p>
+        <p aria-label="movie description" className={movieStyle.description}>{movie.overview}</p>
       </div>
 
       <div className={movieStyle.info_container}>
-        <Image className={movieStyle.poster} src={moviePosterSrc} width={400} height={598} alt={`${movie.title} poster`} />
+        <Image aria-label="movie image" className={movieStyle.poster} src={moviePosterSrc} width={400} height={598} alt={`${movie.title} poster`} />
         <div className={movieStyle.info_text_container}>
-          <h3 className={movieStyle.subheading}>Our Rating:</h3>
+          <h3 aria-label="rating" className={movieStyle.subheading}>Our Rating:</h3>
           <StarRating initialRating={Math.round(movie.vote_average / 1.8)} justDisplayStars={true} />
-          <h3 className={movieStyle.subheading}>Genre:</h3>
+          <h3 aria-label="Genre" className={movieStyle.subheading}>Genre:</h3>
           <div>
             {movie.genres.map((genre) => (
               <p key={genre.id}>{genre.name}</p>
             ))}
           </div>
-          <h3 className={movieStyle.subheading}>Release Data:</h3>
+          <h3 aria-label="Release Data" className={movieStyle.subheading}>Release Data:</h3>
           <p>{movie.release_date.replace(/(\d{4})-(\d{2})-(\d{2})/, "$3/$2/$1")}</p>
 
-          <h3 className={movieStyle.subheading}>Runtime:</h3>
-          <p>{movie.runtime} minutes</p>
-          <h3 className={movieStyle.subheading}>Budget:</h3>
+          <h3 aria-label="Runtime" className={movieStyle.subheading}>Runtime:</h3>
+          <p aria-label="minutes" >{movie.runtime} minutes</p>
+          <h3 aria-label="Budget" className={movieStyle.subheading}>Budget:</h3>
           <p>${movie.budget.toLocaleString()}</p>
         </div>
       </div>
 
-      <h3 className={movieStyle.subheading}>Reviews</h3>
+      <h3 aria-label="Reviews" className={movieStyle.subheading}>Reviews</h3>
       <div className={movieStyle.reviews_container}>
         {reviews.rows.length === 0 ? (
           <div className={movieStyle.review}>
-            <p className="text-center">No reviews available</p>
+            <p aria-label="No reviews available" className="text-center">No reviews available</p>
           </div>
         ) : (
           reviews.rows.map((review) => (
             <div className={movieStyle.review} key={review.review_id}>
               <p>{review.review_text}</p>
               <StarRating initialRating={review.rating} justDisplayStars={true} />
-              <p>Reviewed by: {review.username}</p>
-              <p>Posted: {review.review_date.toLocaleString("en-GB")}</p>
+              <p aria-label="reviews available" reviews available>Reviewed by: {review.username}</p>
+              <p aria-label="Posted">Posted: {review.review_date.toLocaleString("en-GB")}</p>
               {user && user.id === review.user_id && (
                 <div className={movieStyle.edit_review_container}>
                   <EditReview review_id={review.review_id} movie_id={movieID} currentRating={review.rating} currentReview={review.review_text} />
@@ -126,19 +126,19 @@ export default async function Movie({ params }) {
         )}
       </div>
 
-      <h3 className={movieStyle.subheading}>Add Review</h3>
+      <h3 aria-label="Add Review" className={movieStyle.subheading}>Add Review</h3>
       {user ? (
         <div className={movieStyle.add_review_container}>
           <form className={movieStyle.add_review_form} action={handleSaveReview}>
             <StarRating />
-            <label htmlFor="reviewText">Review:</label>
+            <label aria-label="label" htmlFor="reviewText">Review:</label>
             <textarea id="reviewText" name="reviewText" required />
             <SubmitReviewButton />
           </form>
         </div>
       ) : (
         <div className={movieStyle.add_review_container}>
-          <p>You need to be logged in to add a review.</p>
+          <p aria-label="You need to be logged">You need to be logged in to add a review.</p>
         </div>
       )}
     </main>

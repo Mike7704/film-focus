@@ -7,15 +7,36 @@ export default function Footer() {
     <footer className={footerStyle.container}>
       <p className="text-xs opacity-50">Film Focus - 2024</p>
       <div className={footerStyle.links_container}>
-        <Link className={footerStyle.link} target="_blank" href="https://github.com/Mike7704">
+        <Link
+          role="button"
+          aria-describedby="GIT Michael Cowley"
+          aria-pressed="false"
+          className={footerStyle.link}
+          target="_blank"
+          href="https://github.com/Mike7704"
+        >
           <FaGithub className={footerStyle.icon} />
           Michael Cowley
         </Link>
-        <Link className={footerStyle.link} target="_blank" href="https://github.com/Lima7048">
+        <Link
+          role="button"
+          aria-describedby="GIT Salima Bryce"
+          aria-pressed="false"
+          className={footerStyle.link}
+          target="_blank"
+          href="https://github.com/Lima7048"
+        >
           <FaGithub className={footerStyle.icon} />
           Salima Bryce
         </Link>
-        <Link className={footerStyle.link} target="_blank" href="https://github.com/91oscar">
+        <Link
+          role="button"
+          aria-describedby="GIT Oscar Moran"
+          aria-pressed="false"
+          className={footerStyle.link}
+          target="_blank"
+          href="https://github.com/91oscar"
+        >
           <FaGithub className={footerStyle.icon} />
           Oscar Moran
         </Link>
