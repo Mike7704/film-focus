@@ -13,6 +13,8 @@ export default async function Movie({ params }) {
   const apiKey = process.env.TMDB_API_KEY;
   const movieID = params.id;
   let movie;
+  let isMovieBackground = false;
+  let moviePosterSrc = `/images/image-not-found.png`;
   let reviews;
 
   try {
@@ -36,6 +38,14 @@ export default async function Movie({ params }) {
     throw new Error("Could not load reviews");
   }
 
+  // Check if the API has images for the movie
+  if (movie.backdrop_path !== null) {
+    isMovieBackground = true;
+  }
+  if (movie.poster_path !== null) {
+    moviePosterSrc = `https://image.tmdb.org/t/p/w400${movie.poster_path}`;
+  }
+
   async function handleSaveReview(formData) {
     "use server";
     const reviewText = formData.get("reviewText");
@@ -54,34 +64,30 @@ export default async function Movie({ params }) {
 
   return (
     <main className={movieStyle.page}>
+      {isMovieBackground && (
+        <>
+          <div className={movieStyle.background_black}></div>
+          <Image
+            className={movieStyle.background_image}
+            src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
+            width={1280}
+            height={720}
+            alt={`${movie.title} background`}
+          />
+        </>
+      )}
       <div className={movieStyle.header_container}>
-        <Image
-          className={movieStyle.background_image}
-          src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
-          width={1280}
-          height={720}
-          alt={`${movie.title} background`}
-        />
-
-        <div className={movieStyle.title_container}>
-          <h2 className={movieStyle.title}>{movie.title}</h2>
-          <p className={movieStyle.title_sub}>{movie.tagline}</p>
-          <p className={movieStyle.title_sub}>{movie.overview}</p>
-        </div>
+        <h2 className={movieStyle.title}>{movie.title}</h2>
+        <p className={movieStyle.description}>{movie.tagline}</p>
+        <p className={movieStyle.description}>{movie.overview}</p>
       </div>
 
       <div className={movieStyle.info_container}>
-        <Image
-          className={movieStyle.poster}
-          src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
-          width={400}
-          height={598}
-          alt={`${movie.title} poster`}
-        />
+        <Image className={movieStyle.poster} src={moviePosterSrc} width={400} height={598} alt={`${movie.title} poster`} />
         <div className={movieStyle.info_text_container}>
           <h3 className={movieStyle.subheading}>Our Rating:</h3>
-          <StarRating initialRating={Math.round(movie.vote_average / 2)} justDisplayStars={true} />
-          <h3 className={movieStyle.subheading}>Genres:</h3>
+          <StarRating initialRating={Math.round(movie.vote_average / 1.8)} justDisplayStars={true} />
+          <h3 className={movieStyle.subheading}>Genre:</h3>
           <div>
             {movie.genres.map((genre) => (
               <p key={genre.id}>{genre.name}</p>

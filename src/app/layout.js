@@ -3,13 +3,13 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "@/styles/globals.css";
-import "@/styles/normalize.css"
+import "@/styles/normalize.css";
 
-const font = Raleway({ subsets: ["latin"], weight: "500" });
+const font = Raleway({ subsets: ["latin"], weight: "600" });
 
 export const metadata = {
   title: "Film Focus",
-  description: "A movie review app",
+  description: "A Next.js movie database application.",
 };
 
 export default function RootLayout({ children }) {
