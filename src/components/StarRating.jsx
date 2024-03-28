@@ -15,6 +15,7 @@ export default function StarRating({ initialRating, justDisplayStars }) {
         return (
           <label key={currentRating}>
             <input
+              aria-label="input"
               className="hidden"
               type="radio"
               id="rating"
@@ -26,6 +27,9 @@ export default function StarRating({ initialRating, justDisplayStars }) {
               required
             />
             <FaStar
+              role="button"
+              aria-describedby="Star"
+              aria-pressed="false"
               className={!justDisplayStars && ratingStyle.star}
               size={30}
               color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}

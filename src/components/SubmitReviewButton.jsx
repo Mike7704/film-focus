@@ -5,7 +5,14 @@ export default function SubmitReviewButton() {
   const formStatus = useFormStatus();
 
   return (
-    <button className="button" type="submit" disabled={formStatus.pending}>
+    <button
+      role="button"
+      aria-describedby="submit"
+      aria-pressed="false"
+      className="button"
+      type="submit"
+      disabled={formStatus.pending}
+    >
       {formStatus.pending ? "Submitting..." : "Submit"}
     </button>
   );

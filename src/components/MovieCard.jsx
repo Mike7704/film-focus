@@ -10,10 +10,21 @@ export default function MovieCard({ movie }) {
 
   return (
     <div key={movie.id} className={movieCardStyle.movie_container}>
-      <Image className={movieCardStyle.image} src={moviePosterSrc} width={185} height={250} alt="Movie Poster" />
+      <Image
+        aria-label={`${movie.title} poster`}
+        className={movieCardStyle.image}
+        src={moviePosterSrc}
+        width={185}
+        height={250}
+        alt={`${movie.title} poster`}
+      />
       <div className={movieCardStyle.text_container}>
-        <p className="text-xl">{movie.title}</p>
-        <p className="text-sm">{movie.release_date.replace(/(\d{4})-(\d{2})-(\d{2})/, "$3/$2/$1")}</p>
+        <p aria-label="Movie title" className="text-xl">
+          {movie.title}
+        </p>
+        <p aria-label="Release Date" className="text-sm">
+          {movie.release_date.replace(/(\d{4})-(\d{2})-(\d{2})/, "$3/$2/$1")}
+        </p>
       </div>
     </div>
   );
