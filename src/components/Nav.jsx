@@ -17,9 +17,6 @@ export default function Nav() {
       <Link className={headerStyle.nav_button} href={"/movie-picker"}>
         Movie Picker
       </Link>
-      <Link className={headerStyle.nav_button} href={"/watchlist"}>
-        Watchlist
-      </Link>
       {userId ? <UserButton /> : <SignInButton />}
     </nav>
   );

@@ -3,7 +3,7 @@ import wheelStyle from "@/styles/wheel.module.css";
 
 export default function WheelPicker() {
   return (
-    <main className={wheelStyle.page_container}>
+    <main className={wheelStyle.page}>
       <h3 className={wheelStyle.heading}>Not sure what to watch? Spin the wheel for it to make the choice for you.</h3>
       <WheelComponent />
     </main>
