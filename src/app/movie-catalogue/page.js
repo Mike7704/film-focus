@@ -14,7 +14,6 @@ export default async function Catalogue({ searchParams }) {
     pageNum = searchParams.page;
   }
 
-  console.log(`https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=${pageNum}&api_key=${apiKey}`);
   if (searchParams.query) {
     response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchParams.query}&page=${pageNum}&api_key=${apiKey}`);
   } else {

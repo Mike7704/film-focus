@@ -16,7 +16,9 @@
   padding-top: 4rem;
   font-weight: bold;
   font-size: 25px;
+  text-align: center;
 }
+
 .container {
   display: flex;
   align-items: center;

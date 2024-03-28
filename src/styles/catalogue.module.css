@@ -17,3 +17,10 @@
   padding: 40px;
   max-width: 1700px;
 }
+
+@media (max-width: 750px) {
+  .movies_container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

@@ -22,7 +22,7 @@ export default function EditReview({ review_id, movie_id, currentRating, current
       {showForm ? (
         <>
           <form className={movieStyle.add_review_form} action={handleEditReview}>
-            <StarRating initialRating={currentRating} />
+            <StarRating />
             <label htmlFor="reviewText">Review:</label>
             <textarea id="reviewText" name="reviewText" value={inputText} onChange={(e) => setInputText(e.target.value)} />
             <SubmitReviewButton />

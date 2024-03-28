@@ -3,21 +3,27 @@
 @tailwind utilities;
 
 *::-webkit-scrollbar {
-  width: 10px;
-  background-color: silver;
-  border-radius: 10px;
-  overflow: auto;
+  background: transparent;
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #838383;
   cursor: pointer;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: #93a5cf;
-  border-radius: 10px;
+  background: #666666;
+  border-radius: 6px;
   cursor: pointer;
 }
 
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 *::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 0, 0, 0.324);
+  background: #494949;
 }
 
 body {
@@ -73,4 +79,25 @@ textarea {
   font-size: 18px;
   color: black;
   padding: 5px 8px 5px 8px;
+}
+
+@media (max-width: 750px) {
+  .button {
+    font-size: 15px;
+    min-width: 100px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  p,
+  label {
+    font-size: 15px;
+  }
+
+  input,
+  textarea {
+    font-size: 15px;
+  }
 }

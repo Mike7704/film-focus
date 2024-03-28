@@ -1,11 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import ratingStyle from "@/styles/star_rating.module.css";
 
 export default function StarRating({ initialRating, justDisplayStars }) {
   const [rating, setRating] = useState(initialRating);
   const [hover, setHover] = useState(null);
+
+  useEffect(() => {
+    setRating(initialRating);
+  }, [initialRating]);
 
   return (
     <div className={ratingStyle.container}>
