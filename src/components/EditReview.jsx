@@ -6,12 +6,7 @@ import SubmitReviewButton from "@/components/SubmitReviewButton";
 import DeleteButton from "@/components/DeleteReviewButton";
 import movieStyle from "@/styles/movie.module.css";
 
-export default function EditReview({
-  review_id,
-  movie_id,
-  currentRating,
-  currentReview,
-}) {
+export default function EditReview({ review_id, movie_id, currentRating, currentReview }) {
   const [inputText, setInputText] = useState(currentReview);
   const [showForm, setShowForm] = useState(false);
 
@@ -26,43 +21,23 @@ export default function EditReview({
     <>
       {showForm ? (
         <>
-          <form
-            className={movieStyle.add_review_form}
-            action={handleEditReview}
-          >
+          <form className={movieStyle.add_review_form} action={handleEditReview}>
             <StarRating aria-label="Rating" />
             <label aria-label="Review" htmlFor="reviewText">
               Review:
             </label>
-            <textarea
-              id="reviewText"
-              name="reviewText"
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-            />
+            <textarea id="reviewText" name="reviewText" value={inputText} onChange={(e) => setInputText(e.target.value)} />
             <SubmitReviewButton />
           </form>
           <div className={movieStyle.edit_review_buttons}>
-            <button
-              role="button"
-              aria-describedby="Close"
-              aria-pressed="false"
-              className="button"
-              onClick={() => setShowForm(false)}
-            >
+            <button role="button" aria-describedby="Close" aria-pressed="false" className="button" onClick={() => setShowForm(false)}>
               Close
             </button>
             <DeleteButton review_id={review_id} movie_id={movie_id} />
           </div>
         </>
       ) : (
-        <button
-          role="button"
-          aria-describedby="Edit"
-          aria-pressed="false"
-          className="button"
-          onClick={() => setShowForm(true)}
-        >
+        <button role="button" aria-describedby="Edit" aria-pressed="false" className="button" onClick={() => setShowForm(true)}>
           Edit
         </button>
       )}

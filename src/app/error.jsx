@@ -7,13 +7,7 @@ export default function GlobalError({ error, reset }) {
         Error! Something went wrong!
       </h2>
       <p>{error.message}</p>
-      <button
-        role="button"
-        aria-describedby="Try again"
-        aria-pressed="false"
-        className="button"
-        onClick={() => reset()}
-      >
+      <button role="button" aria-describedby="Try again" aria-pressed="false" className="button" onClick={() => reset()}>
         Try again
       </button>
     </main>

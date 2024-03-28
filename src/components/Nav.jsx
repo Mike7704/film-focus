@@ -11,18 +11,10 @@ export default function Nav() {
       <Link aria-label="Home" className={headerStyle.nav_button} href={"/"}>
         Home
       </Link>
-      <Link
-        aria-label="movie-catalogue"
-        className={headerStyle.nav_button}
-        href={"/movie-catalogue"}
-      >
+      <Link aria-label="movie-catalogue" className={headerStyle.nav_button} href={"/movie-catalogue"}>
         Movie Catalogue
       </Link>
-      <Link
-        aria-label="movie-picker"
-        className={headerStyle.nav_button}
-        href={"/movie-picker"}
-      >
+      <Link aria-label="movie-picker" className={headerStyle.nav_button} href={"/movie-picker"}>
         Movie Picker
       </Link>
       {userId ? <UserButton /> : <SignInButton />}

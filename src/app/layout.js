@@ -9,7 +9,7 @@ const font = Raleway({ subsets: ["latin"], weight: "600" });
 
 export const metadata = {
   title: "Film Focus",
-  description: "A Next.js movie database application.",
+  description: "Film Focus is a movie database app that allows users to explore and review movies.",
 };
 
 export default function RootLayout({ children }) {

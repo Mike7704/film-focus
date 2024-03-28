@@ -12,13 +12,7 @@ export default function NotFound() {
         Return to the home page
       </Link>
       */}
-      <button
-        role="button"
-        aria-describedby="Return To Home"
-        aria-pressed="false"
-        className="button"
-        onClick={() => (window.location.href = "/")}
-      >
+      <button role="button" aria-describedby="Return To Home" aria-pressed="false" className="button" onClick={() => (window.location.href = "/")}>
         Return To Home
       </button>
     </main>

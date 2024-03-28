@@ -17,9 +17,7 @@
     "react": "^18",
     "react-custom-roulette": "^1.4.1",
     "react-dom": "^18",
-    "react-icons": "^5.0.1",
-    "react-native-wheel-spinner": "^1.1.7",
-    "spin-wheel": "^4.3.1"
+    "react-icons": "^5.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
