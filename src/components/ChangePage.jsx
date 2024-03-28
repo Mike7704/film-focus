@@ -31,9 +31,7 @@ export default function ChangePage({ currentPage, totalPages, query }) {
           aria-describedby="Previous"
           aria-pressed="false"
           className="button "
-          href={`/movie-catalogue${
-            query ? `?query=${query}&` : "?"
-          }page=${previousPageNumber}`}
+          href={`/movie-catalogue${query ? `?query=${query}&` : "?"}page=${previousPageNumber}`}
         >
           Previous
         </Link>
@@ -44,9 +42,7 @@ export default function ChangePage({ currentPage, totalPages, query }) {
           aria-describedby="Next"
           aria-pressed="false"
           className="button "
-          href={`/movie-catalogue${
-            query ? `?query=${query}&` : "?"
-          }page=${nextPageNumber}`}
+          href={`/movie-catalogue${query ? `?query=${query}&` : "?"}page=${nextPageNumber}`}
         >
           Next
         </Link>
