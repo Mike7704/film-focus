@@ -1,5 +1,5 @@
 import { sql } from "@vercel/postgres";
-import { currentUser } from "@clerk/nextjs";
+import { currentUser, SignInButton, SignUpButton } from "@clerk/nextjs";
 import { notFound } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import Image from "next/image";
@@ -48,18 +48,22 @@ export default async function Movie({ params }) {
 
   async function handleSaveReview(formData) {
     "use server";
-    const reviewText = formData.get("reviewText");
-    const rating = formData.get("rating");
+    try {
+      const reviewText = formData.get("reviewText");
+      const rating = formData.get("rating");
 
-    await sql`INSERT INTO MovieReviews (user_id, username, movie_id, rating, review_text) VALUES (
-      ${user.id}, 
-      ${user.username}, 
+      await sql`INSERT INTO MovieReviews (user_id, username, movie_id, rating, review_text) VALUES (
+      ${user?.id}, 
+      ${user?.username}, 
       ${movieID}, 
       ${rating}, 
       ${reviewText}
-      );`;
+    );`;
 
-    revalidatePath(`/movie/${movieID}`);
+      revalidatePath(`/movie/${movieID}`);
+    } catch (error) {
+      throw new Error("Could not save review");
+    }
   }
 
   // Validate reviews on refresh
@@ -107,23 +111,23 @@ export default async function Movie({ params }) {
               <p key={genre.id}>{genre.name}</p>
             ))}
           </div>
-          <h3 aria-label="Release Data" className={movieStyle.subheading}>
+          <h3 aria-label="release date" className={movieStyle.subheading}>
             Release Data:
           </h3>
           <p>{movie.release_date.replace(/(\d{4})-(\d{2})-(\d{2})/, "$3/$2/$1")}</p>
 
-          <h3 aria-label="Runtime" className={movieStyle.subheading}>
+          <h3 aria-label="runtime" className={movieStyle.subheading}>
             Runtime:
           </h3>
           <p aria-label="minutes">{movie.runtime} minutes</p>
-          <h3 aria-label="Budget" className={movieStyle.subheading}>
+          <h3 aria-label="budget" className={movieStyle.subheading}>
             Budget:
           </h3>
           <p>${movie.budget.toLocaleString()}</p>
         </div>
       </div>
 
-      <h3 aria-label="Reviews" className={movieStyle.subheading}>
+      <h3 aria-label="reviews" className={movieStyle.subheading}>
         Reviews
       </h3>
       <div className={movieStyle.reviews_container}>
@@ -142,7 +146,7 @@ export default async function Movie({ params }) {
                 Reviewed by: {review.username}
               </p>
               <p aria-label="Posted">Posted: {review.review_date.toLocaleString("en-GB")}</p>
-              {user && user.id === review.user_id && (
+              {user && user?.id === review.user_id && (
                 <div className={movieStyle.edit_review_container}>
                   <EditReview review_id={review.review_id} movie_id={movieID} currentRating={review.rating} currentReview={review.review_text} />
                 </div>
@@ -167,8 +171,12 @@ export default async function Movie({ params }) {
           </form>
         </div>
       ) : (
-        <div className={movieStyle.add_review_container}>
-          <p aria-label="You need to be logged">You need to be logged in to add a review.</p>
+        <div className={movieStyle.review}>
+          <p aria-label="Not logged in" className="text-center">
+            You need to be logged in to add a review.
+          </p>
+          <SignInButton className="button">Sign in</SignInButton>
+          <SignUpButton className="button">Sign up</SignUpButton>
         </div>
       )}
     </main>

@@ -4,26 +4,25 @@
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
-  height: 95vh;
   color: black;
   border-bottom: 2px solid white;
 }
 
 .heading {
   color: #00000092;
-  padding-top: 4rem;
+  padding: 20px;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
 }
 
 .container {
   display: flex;
   align-items: center;
-  width: 90%;
-  flex: 0.8;
+  flex: 0.5;
 }
 
 .wheel_container {
@@ -37,7 +36,12 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+}
+
+.form_container {
+  display: flex;
+  align-items: flex-start;
 }
 
 .result {
@@ -50,6 +54,7 @@
   font-weight: 500;
   color: #ffffff;
 }
+
 .buttonSpin {
   background-color: #ffbe0b;
   border: 2px solid #ffa601;
@@ -58,7 +63,7 @@
   font-size: 16px;
   min-width: 140px;
   padding: 5px 20px 5px 20px;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .buttonAdd {
@@ -82,4 +87,30 @@
   padding: 0.5px 1px 0.5px 1px;
   margin-left: 0.5rem;
   margin-bottom: 0.25rem;
+}
+
+@media (max-width: 1000px) {
+  .page {
+    background-image: none;
+    background-color: white;
+  }
+
+  .heading {
+    font-size: 20px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .input_container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+
+  .form_container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

@@ -9,7 +9,7 @@ export default function SearchBar() {
   }
 
   return (
-    <form aria-label="SearchBar" action={handleSearch} className="flex items-center gap-2">
+    <form aria-label="SearchBar" action={handleSearch} className="flex flex-wrap justify-center items-center gap-2">
       <ImSearch />
       <input aria-label="input" className="h-full" type="text" id="searchQuery" name="searchQuery" placeholder="Search..." required />
       <button role="button" aria-describedby="Search" aria-pressed="false" className="button" type="submit">

@@ -31,7 +31,7 @@ export default function StarRating({ initialRating, justDisplayStars }) {
               required
             />
             <FaStar
-              role="button"
+              role={!justDisplayStars && "button"}
               aria-describedby="Star"
               aria-pressed="false"
               className={!justDisplayStars && ratingStyle.star}

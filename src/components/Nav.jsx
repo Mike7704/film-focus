@@ -17,7 +17,7 @@ export default function Nav() {
       <Link aria-label="movie-picker" className={headerStyle.nav_button} href={"/movie-picker"}>
         Movie Picker
       </Link>
-      {userId ? <UserButton /> : <SignInButton />}
+      {userId ? <UserButton afterSignOutUrl="/" /> : <SignInButton className={headerStyle.nav_button} />}
     </nav>
   );
 }

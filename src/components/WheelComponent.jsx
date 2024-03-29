@@ -58,7 +58,10 @@ export default function WheelComponent() {
         </button>
       </div>
       <div className={wheelStyle.input_container}>
-        <form action={handleAddMovieOption}>
+        <h3 aria-label="wheel information" className={wheelStyle.heading}>
+          Not sure what to watch? Spin the wheel for it to make the choice for you.
+        </h3>
+        <form action={handleAddMovieOption} className={wheelStyle.form_container}>
           <input
             aria-label="Enter movie name"
             className="border-gray-400"
