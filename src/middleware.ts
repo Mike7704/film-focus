@@ -2,7 +2,7 @@ import { authMiddleware } from "@clerk/nextjs";
 
 export default authMiddleware({
   //routes that anyone can access without authentication
-  publicRoutes: ["/", "/about", "/home/([^/.]+)"],
+  publicRoutes: ["/", "/movie-catalogue", "/movie/([^/.]+)", "/movie-picker"],
 });
 
 export const config = {
