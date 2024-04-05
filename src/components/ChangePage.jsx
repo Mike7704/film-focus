@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function ChangePage({ currentPage, totalPages, query }) {
+export default function ChangePage({ currentPage, totalPages, query, genreID }) {
   const currentPageNum = parseInt(currentPage, 10);
   const [showPreviousButton, setShowPreviousButton] = useState(false);
   const [showNextButton, setShowNextButton] = useState(false);
@@ -30,8 +30,8 @@ export default function ChangePage({ currentPage, totalPages, query }) {
           role="button"
           aria-describedby="Previous"
           aria-pressed="false"
-          className="button "
-          href={`/movie-catalogue${query ? `?query=${query}&` : "?"}page=${previousPageNumber}`}
+          className="button"
+          href={`/movie-catalogue${query ? `?query=${query}&` : "?"}${genreID ? `genreID=${genreID}&` : ""}page=${previousPageNumber}`}
         >
           Previous
         </Link>
@@ -41,8 +41,8 @@ export default function ChangePage({ currentPage, totalPages, query }) {
           role="button"
           aria-describedby="Next"
           aria-pressed="false"
-          className="button "
-          href={`/movie-catalogue${query ? `?query=${query}&` : "?"}page=${nextPageNumber}`}
+          className="button"
+          href={`/movie-catalogue${query ? `?query=${query}&` : "?"}${genreID ? `genreID=${genreID}&` : ""}page=${nextPageNumber}`}
         >
           Next
         </Link>

@@ -18,6 +18,15 @@
   max-width: 1700px;
 }
 
+.genres_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 10px 0px 10px;
+}
+
 @media (max-width: 750px) {
   .movies_container {
     padding-left: 20px;

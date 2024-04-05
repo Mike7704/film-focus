@@ -64,7 +64,7 @@ As a user, I want to...
 #### Future additions:
 
 - Watchlist - Allow users to add movies to their personal watchlist so they can keep track of movies they wish to watch.
-- Filter Movies - Add more search options such as sorting by category.
+- ~~Filter Movies - Add more search options such as sorting by category.~~
 - View Profiles - Allow users to visit other profiles and view their watchlist and reviews.
 - More CSS - Make our app look even better with more styling and animations.
 

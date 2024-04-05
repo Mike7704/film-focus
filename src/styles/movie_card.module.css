@@ -31,3 +31,10 @@
 .movie_container:hover .text_container {
   bottom: 0;
 }
+
+@media (max-width: 750px) {
+  .movie_container {
+    width: 140px;
+    height: auto;
+  }
+}
